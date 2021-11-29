@@ -31,21 +31,20 @@ int main()
   n = SIZE - 1;
   for (i = 0; i < SIZE; i++)
   {
-    if (fscanf(input, "%s%s%d%d%d%d%d", seiseki[i].mei, seiseki[i].kana, &seiseki[i].ei, &seiseki[i].koku, &seiseki[i].su, &seiseki[i].sha, &seiseki[i].ri) == EOF)
-    {
+    if(fscanf(input, "%s%s%d%d%d%d%d",
+        seiseki[i].mei, seiseki[i].kana,
+        &seiseki[i].ei, &seiseki[i].koku, &seiseki[i].su,
+        &seiseki[i].sha, &seiseki[i].ri) == EOF){
       n = i - 1;
       break;
     }
   }
   fclose(input);
-  for (i = 0; i <= n - 1; i++)
-  {
+  for (i = 0; i <= n - 1; i++){
     max = seiseki[i];
     m = i;
-    for (j = i + 1; j <= n; j++)
-    {
-      if (max.ei < seiseki[j].ei)
-      {
+    for (j = i + 1; j <= n; j++){
+      if (max.ei < seiseki[j].ei){
         max = seiseki[j];
         m = j;
       }
@@ -54,9 +53,10 @@ int main()
     seiseki[i] = max;
   }
   printf("\t名前\t\tフリガナ\t英\t国\t数\t社\t理\n");
-  for (i = 0; i <= n; i++)
-  {
+  for (i = 0; i <= n; i++){
     printf("\t%-10s\t%-10s\t%d\t%d\t%d\t%d\t%d\n",
-    seiseki[i].mei, seiseki[i].kana, seiseki[i].ei, seiseki[i].koku, seiseki[i].su, seiseki[i].sha, seiseki[i].ri);
+        seiseki[i].mei, seiseki[i].kana, seiseki[i].ei,
+        seiseki[i].koku, seiseki[i].su,
+        seiseki[i].sha, seiseki[i].ri);
   }
 }
